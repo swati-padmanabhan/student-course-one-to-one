@@ -1,0 +1,136 @@
+﻿@model IEnumerable<StudentCourseOneToOne.Models.Student>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        body {
+            font-family: 'Indie Flower', cursive;
+            background-color: #212121;
+            color: #F0ECE5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #14FFEC;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #323232;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+            .table th, .table td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #0D7377;
+            }
+
+            .table th {
+                background-color: #0D7377;
+                color: #F0ECE5;
+            }
+
+            .table td {
+                background-color: #323232;
+            }
+
+                .table td a {
+                    text-decoration: none;
+                    color: #14FFEC;
+                    padding: 0 10px;
+                }
+
+                    .table td a:hover {
+                        text-decoration: underline;
+                        color: #F0ECE5;
+                    }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0D7377;
+            color: #F0ECE5;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+
+        p {
+            text-align: right;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn" })
+    </p>
+    <table class="table" border="1" width="70%"> 
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Course.Duration)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.CourseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Course.Duration)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StudentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StudentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StudentId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
